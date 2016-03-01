@@ -1,0 +1,56 @@
+<html ng-app="ponyclubApp">
+    <head>
+        <meta charset="utf-8"/>
+        <link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" rel="stylesheet"/>
+        <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.5.0/angular.min.js"></script>
+        <script src="ponyclub.js"></script>
+    </head>
+    <body>
+        <div class="container" ng-controller="PonyListController as ponyclub">
+            <h1>Pony Club</h1>
+            <div class="row">
+                <div class="col-md-8">
+                    <div class="panel panel-default" ng-repeat="pony in ponyclub.ponys | filter:ponyclub.searchText">
+                      <div class="panel-heading">{{pony.name}}</div>
+                      <div class="panel-body">
+                        {{pony.description}}
+                      </div>
+                    </div>
+                </div>
+                <div class="col-md-4">
+                    <div class="panel panel-info">
+                        <div class="panel-heading">Find a pony</div>
+                          <div class="panel-body">
+                            <form>
+                                  <div class="form-group">
+                                    <label for="name">Name</label>
+                                    <input type="text" class="form-control" ng-model="ponyclub.searchText" placeholder="Name">
+                                  </div>
+                              </form>
+                          </div>
+                    </div>
+                    <div class="panel panel-info">
+                        <div class="panel-heading">Add new pony to the club</div>
+                          <div class="panel-body">
+                            <form ng-submit="ponyclub.add()">
+                                  <div class="form-group">
+                                    <label for="name">Name</label>
+                                    <input type="text" class="form-control" ng-model="ponyclub.ponyname" placeholder="Name">
+                                  </div>
+                              <div class="form-group">
+                                <label for="description">Description</label>
+                                <input type="text" class="form-control" ng-model="ponyclub.ponydescription" placeholder="Password">
+                              </div>
+                                <div class="form-group">
+                                    <div class="col-sm-10">
+                                      <button type="submit" class="btn btn-primary">Add</button>
+                                    </div>
+                                </div>
+                              </form>
+                          </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </body>
+</html>
