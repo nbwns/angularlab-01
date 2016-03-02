@@ -2,10 +2,6 @@ var ponyclubAppModule = angular.module("ponyclubApp",[]);
 
 ponyclubAppModule.controller("PonyListController", function($scope, $http){
     var ponyclub = this;
-    /*ponyclub.ponys = [
-        {name: "Rainbow Dash", description: "Double rainbow !"},
-        {name: "Pinkie Pie", description: "If you love pink you'll love her"}
-    ];*/
     
     $http.get('https://node-test-nbwns.c9.io/ponies').success(function(data) {
         ponyclub.ponies = data;
